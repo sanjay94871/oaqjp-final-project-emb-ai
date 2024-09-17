@@ -12,7 +12,8 @@ def emo_detector():
     """function to send text to the detector function"""
     text_to_analyse = request.args.get("textToAnalyze")
     response = emotion_detector(text_to_analyse)
-    
+    if response["dominant_emotion"] == 'None':
+        return "Invalid text! Please try again!"
     return response
 
 
